@@ -89,7 +89,7 @@ export const getMyOrder = async ({ id }) => {
             qty, 
             total_price, 
             substring(odate,1,10) as odate,
-            concat('http://3.34.1.252:9000/',main_image->>'$[0]') as main_image,
+            concat('http://13.125.210.180:9000/',main_image->>'$[0]') as main_image,
             delivery_status,
             pname
         from view_myOrder
@@ -114,7 +114,7 @@ export const getWishNumber = async ({ id }) => {
 export const getWishInfo = async ({ pid }) => {
     const sql = `
         select pname, 
-       concat('http://3.34.1.252:9000/',main_image->>'$[0]') as main_image,
+       concat('http://13.125.210.180:9000/',main_image->>'$[0]') as main_image,
         price,
         pid            
         from product

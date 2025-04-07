@@ -8,7 +8,7 @@ import { db } from './db.js';
 export const getList = async (category_id) => {
     let sql = `
         SELECT pid, pname, category_id, price, discount_rate,
-               CONCAT('http://3.34.1.252:9000/', main_image->>'$[0]') AS image,
+               CONCAT('http://13.125.210.180:9000/', main_image->>'$[0]') AS image,
                main_image, pdate
         FROM product
     `;
@@ -36,13 +36,13 @@ export const getProduct = async (pid) => {
             p.price as price,
             p.discount_rate as discount_rate,
             p.pdate as pdate,
-                concat('http://3.34.1.252:9000/', p.main_image->>'$[0]') as mainImg,
+                concat('http://13.125.210.180:9000/', p.main_image->>'$[0]') as mainImg,
                 (
-                    select json_arrayagg(concat('http://3.34.1.252:9000/', s.slideCol))
+                    select json_arrayagg(concat('http://13.125.210.180:9000/', s.slideCol))
                     from json_table(p.slide_image, '$[*]' columns(slideCol varchar(100) path '$')) as s
                 ) as SlideImgList,
                 (
-                    select json_arrayagg(concat('http://3.34.1.252:9000/', d.descCol))
+                    select json_arrayagg(concat('http://13.125.210.180:9000/', d.descCol))
                     from json_table(p.desc_image, '$[*]' columns(descCol varchar(100) path '$')) as d
                 ) as descImgList
 
@@ -137,7 +137,7 @@ export const getSUbCateItems = async (category) => {
 
     const sql = `
     SELECT pid, pname, sub_category_id, price, discount_rate,
-            CONCAT('http://3.34.1.252:9000/', main_image->>'$[0]') AS image,
+            CONCAT('http://13.125.210.180:9000/', main_image->>'$[0]') AS image,
             main_image, pdate
     FROM product
     WHERE sub_category_id = ?

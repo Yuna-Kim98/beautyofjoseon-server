@@ -5,10 +5,10 @@ import mysql from 'mysql2';
 
 
 const pool = mysql.createPool({
-    host: 'beautyofjoseon.cvuuqeau0uus.ap-northeast-2.rds.amazonaws.com', 
+    host: 'shoppy-redux-db.cvuuqeau0uus.ap-northeast-2.rds.amazonaws.com', 
     port: 3306,
     user: 'admin',
-    password: 'd201720006!s',
+    password: 'Nj11140625!a',
     database: 'beautydb',
     })
 
